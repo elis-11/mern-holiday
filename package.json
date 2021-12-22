@@ -1,0 +1,29 @@
+{
+  "name": "mern-holiday",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+"server": "nodemon index.js",
+"client": "npm run start --prefix client",
+"dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elis-11/mern-holiday.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elis-11/mern-holiday/issues"
+  },
+  "homepage": "https://github.com/elis-11/mern-holiday#readme",
+  "dependencies": {
+    "concurrently": "^6.5.1",
+    "express": "^4.17.2",
+    "mongoose": "^6.1.3",
+    "node-sass": "^7.0.0",
+    "nodemon": "^2.0.15"
+  }
+}
