@@ -21,6 +21,7 @@
   "homepage": "https://github.com/elis-11/mern-holiday#readme",
   "dependencies": {
     "axios": "^0.24.0",
+    "bcrypt": "^5.0.1",
     "concurrently": "^6.5.1",
     "express": "^4.17.2",
     "mongoose": "^6.1.3",
