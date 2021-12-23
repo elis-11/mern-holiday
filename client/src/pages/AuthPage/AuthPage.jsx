@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 
 import "./AuthPage.scss";
 
 const AuthPage = () => {
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+  });
+
+  const changeHandler = (event) => {
+    setForm({ ...form, [event.target.name]: event.target.value });
+    console.log(form);
+  };
+
   return (
     <BrowserRouter>
       <Switch>
@@ -15,7 +25,12 @@ const AuthPage = () => {
                 <form className="form form-login">
                   <div className="row">
                     <div className="input-field col s12">
-                      <input type="email" name="email" className="validate" />
+                      <input
+                        type="email"
+                        name="email"
+                        className="validate"
+                        onChange={changeHandler}
+                      />
                       <label htmlFor="email">Email</label>
                     </div>
                     <div className="input-field col s12">
@@ -23,6 +38,7 @@ const AuthPage = () => {
                         type="password"
                         name="password"
                         className="validate"
+                        onChange={changeHandler}
                       />
                       <label htmlFor="password">Password</label>
                     </div>
@@ -42,7 +58,12 @@ const AuthPage = () => {
                 <form className="form form-login">
                   <div className="row">
                     <div className="input-field col s12">
-                      <input type="email" name="email" className="validate" />
+                      <input
+                        type="email"
+                        name="email"
+                        className="validate"
+                        onChange={changeHandler}
+                      />
                       <label htmlFor="email">Email</label>
                     </div>
                     <div className="input-field col s12">
@@ -50,6 +71,7 @@ const AuthPage = () => {
                         type="password"
                         name="password"
                         className="validate"
+                        onChange={changeHandler}
                       />
                       <label htmlFor="password">Password</label>
                     </div>
