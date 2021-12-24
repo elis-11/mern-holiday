@@ -9,6 +9,7 @@
 1:09:50--LOGIN
 1:18--SETTINGS-routes & MainPage
 1:23--create-CONTEXT-(tokin from back)
+1:36--
 
 
 
@@ -22,6 +23,8 @@ app.use(cors())
 app.use(express.json({extended: true}))
 --------------------------------
   "proxy": "http://localhost:5000",
+  "proxy": "http://127.0.0:5000",
+
 -------------------------
   "scripts": {
     "server": "nodemon index.js",

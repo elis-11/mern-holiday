@@ -31,6 +31,22 @@ const AuthPage = () => {
     }
   };
 
+  const loginHandler= async()=>{
+    try {
+      await axios
+        .post(
+          "/api/auth/login",
+          { ...form },
+          {
+            headers: { "Content-Type": "application/json" },
+          }
+        )
+        .then((response) => console.log(response));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <BrowserRouter>
       <Switch>
@@ -64,7 +80,9 @@ const AuthPage = () => {
                     </div>
                   </div>
                   <div className="row">
-                    <button className="wawes-effect wawes-light btn grey">
+                    <button className="wawes-effect wawes-light btn grey"
+                    onClick={loginHandler}
+                    >
                       Login
                     </button>
                     <Link to="/registration" className="btn-outline btn-reg">
