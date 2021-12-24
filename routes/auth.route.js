@@ -2,6 +2,7 @@ const { Router } = require("express");
 const router = Router();
 const User = require("../models/User");
 const { check, validationResult } = require("express-validator");
+const bcrypt = require("bcryptjs")
 
 
 router.post("/registration",  
@@ -32,9 +33,11 @@ if(!errors.isEmpty()){
         .json({ message: "This Email already exist, please try again." });
     }
 
+    const hashedPassword = await bcrypt.hash(password, 12)
+
     const user = new User({
       email,
-      password,
+      password: hashedPassword
     });
 
     await user.save();
