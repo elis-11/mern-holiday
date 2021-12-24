@@ -1,14 +1,18 @@
 import React from "react";
+import { BrowserRouter } from "react-router-dom";
+import Navbar from "./components/Navbar/Navbar";
+import { useRoutes } from "./routes";
 
 import "./App.scss";
-import Navbar from "./components/Navbar/Navbar";
-import AuthPage from "./pages/AuthPage/AuthPage";
 
 function App() {
+  const routes = useRoutes;
   return (
     <div className="App">
-      <Navbar />
-      <AuthPage />
+      <BrowserRouter>
+        <Navbar />
+        {routes}
+      </BrowserRouter>
     </div>
   );
 }
