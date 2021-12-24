@@ -1,3 +1,5 @@
+# https://www.youtube.com/watch?v=8PZMP06Vap4
+
 24:42---AuthPage
 32:45---BACK--model--database
 36:15--Logik--routes
@@ -9,7 +11,9 @@
 1:09:50--LOGIN
 1:18--SETTINGS-routes & MainPage
 1:23--create-CONTEXT-(tokin from back)
-1:36--
+1:36--TESTING
+1:38--useContext(AuthContext)
+1:40--LOGOUT
 
 
 
