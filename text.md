@@ -14,6 +14,8 @@
 1:36--TESTING
 1:38--useContext(AuthContext)
 1:40--LOGOUT
+1:44--MainPage-styling
+1:53--BACKEND
 
 
 

@@ -85,7 +85,7 @@ const AuthPage = () => {
                     </div>
                   </div>
                   <div className="row">
-                    <button className="wawes-effect wawes-light btn grey"
+                    <button className="waves-effect waves-light btn grey"
                     onClick={loginHandler}
                     >
                       Login
@@ -124,7 +124,7 @@ const AuthPage = () => {
                   </div>
                   <div className="row">
                     <button
-                      className="wawes-effect wawes-light btn grey"
+                      className="waves-effect waves-light btn grey"
                       onClick={registerHandler}
                     >
                       Registration
