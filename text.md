@@ -15,11 +15,11 @@
 1:38--useContext(AuthContext)
 1:40--LOGOUT
 1:44--MainPage-styling
-1:53--BACKEND
+1:53--BACKEND--todo.routes.js(create todo)
 
 
 
-Если при отправки форм будет ошибка cors:
+Если при отправкe форм будет ошибка cors:
 npm install cors
 index.js (nodejs)
 
