@@ -43,7 +43,6 @@ const MainPage = () => {
     }
   }, [text, userId, todos, getTodo]);
 
-
   const removeTodos = useCallback(async (id)=> {
 try {
   await axios.delete(`/api/todo/delete/${id}`, {id}, {
