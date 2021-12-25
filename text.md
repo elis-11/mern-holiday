@@ -17,6 +17,8 @@
 1:44--MainPage-styling
 1:53--BACKEND--todo.routes.js(create todo)
 2:05:55--does not working update 
+2:10:25-- get new TODOS
+2:17:33--
 
 
 

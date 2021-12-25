@@ -6,28 +6,42 @@ import "./MainPage.scss";
 
 const MainPage = () => {
   const [text, setText] = useState("");
-  const {userId} = useContext(AuthContext);
-const [todos, setTodos] = useState([])
+  const { userId } = useContext(AuthContext);
+  const [todos, setTodos] = useState([]);
 
-
-  const createTodo = useCallback(async () => {
-    if(!text) return null
+  const getTodo = useCallback(async () => {
     try {
-      await axios.post(
-        "/api/todo/add",
-        { text, userId },
-        {
+      await axios
+        .get("/api/todo", {
           headers: { "Content-Type": "application/json" },
-        }
-      )
-      .then((response) => {
-        setTodos([...todos], response.data)
-        setText('')
-      })
+          params: { userId },
+        })
+        .then((response) => setTodos(response.data));
     } catch (error) {
       console.log(error);
     }
-  }, [text, userId, todos]);
+  }, [userId]);
+
+  const createTodo = useCallback(async () => {
+    if (!text) return null;
+    try {
+      await axios
+        .post(
+          "/api/todo/add",
+          { text, userId },
+          {
+            headers: { "Content-Type": "application/json" },
+          }
+        )
+        .then((response) => {
+          setTodos([...todos], response.data);
+          setText("")
+          getTodo()
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  }, [text, userId, todos, getTodo]);
 
   return (
     <div className="container">
@@ -48,8 +62,9 @@ const [todos, setTodos] = useState([])
             </div>
           </div>
           <div className="row">
-            <button className="waves-effect waves-light btn grey"
-            onClick={createTodo}
+            <button
+              className="waves-effect waves-light btn grey"
+              onClick={createTodo}
             >
               Add task
             </button>
@@ -58,15 +73,21 @@ const [todos, setTodos] = useState([])
 
         <h3>Active tasks:</h3>
         <div className="todos">
-          <div className="row flex todos-item">
-            <div className="col todos-num">1</div>
-            <div className="col todos-text">Text</div>
-            <div className="col todos-buttons">
-              <i className="material-icons grey-text">check</i>
-              <i className="material-icons orange-text">warning</i>
-              <i className="material-icons red-text">delete</i>
+         {
+           todos.map((todo, index) => {
+             return (
+              <div className="row flex todos-item" key={index}>
+              <div className="col todos-num">{index + 1}</div>
+              <div className="col todos-text">{todo.text}</div>
+              <div className="col todos-buttons">
+                <i className="material-icons grey-text">check</i>
+                <i className="material-icons orange-text">warning</i>
+                <i className="material-icons red-text">delete</i>
             </div>
           </div>
+             )
+           })
+         }
         </div>
       </div>
     </div>
