@@ -84,6 +84,28 @@ const MainPage = () => {
     [getTodo, todos]
   );
 
+  const importantTodo = useCallback(
+    async (id) => {
+      try {
+        await axios
+          .put(
+            `/api/todo/important/${id}`,
+            { id },
+            {
+              headers: { "Content-Type": "application/json" },
+            }
+          )
+          .then((response) => {
+            setTodos([...todos], response.data);
+            getTodo();
+          });
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    [getTodo, todos]
+  );
+
   useEffect(() => {
     getTodo();
   }, [getTodo]);
@@ -118,12 +140,15 @@ const MainPage = () => {
 
         <h3>Active tasks:</h3>
         <div className="todos">
-          
           {todos.map((todo, index) => {
             let cls = ["row flex todos-item"];
 
             if (todo.completed) {
               cls.push("completed");
+            }
+
+            if (todo.important) {
+              cls.push("important");
             }
 
             return (
@@ -137,7 +162,12 @@ const MainPage = () => {
                   >
                     check
                   </i>
-                  <i className="material-icons orange-text">warning</i>
+                  <i
+                    className="material-icons orange-text"
+                    onClick={() => importantTodo(todo._id)}
+                  >
+                    warning
+                  </i>
                   <i
                     className="material-icons red-text"
                     onClick={() => removeTodos(todo._id)}
