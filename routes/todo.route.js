@@ -44,6 +44,17 @@ router.delete('/delete/:id', async (req, res) => {
   }
 })
 
+router.put('/complete/:id', async (req, res) => {
+  try {
+    const todo = await Todo.findOne({_id: req.params.id})
+    todo.completed = !todo.completed
+
+    await todo.save()
+    res.json(todo);
+  } catch (error) {
+    console.log(error);
+  }
+})
 
 
 module.exports = router;

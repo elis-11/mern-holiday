@@ -35,29 +35,58 @@ const MainPage = () => {
         )
         .then((response) => {
           setTodos([...todos], response.data);
-          setText("")
-          getTodo()
+          setText("");
+          getTodo();
         });
     } catch (error) {
       console.log(error);
     }
   }, [text, userId, todos, getTodo]);
 
-  const removeTodos = useCallback(async (id)=> {
-try {
-  await axios.delete(`/api/todo/delete/${id}`, {id}, {
-    headers: {'Content-Type': 'application/json'}
-  })
-  .then(() => getTodo())
+  const removeTodos = useCallback(
+    async (id) => {
+      try {
+        await axios
+          .delete(
+            `/api/todo/delete/${id}`,
+            { id },
+            {
+              headers: { "Content-Type": "application/json" },
+            }
+          )
+          .then(() => getTodo());
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    [getTodo]
+  );
 
-} catch (error) {
-  console.log(error);
-}
+  const completedTodo = useCallback(
+    async (id) => {
+      try {
+        await axios
+          .put(
+            `/api/todo/complete/${id}`,
+            { id },
+            {
+              headers: { "Content-Type": "application/json" },
+            }
+          )
+          .then((response) => {
+            setTodos([...todos], response.data);
+            getTodo();
+          });
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    [getTodo, todos]
+  );
+
+  useEffect(() => {
+    getTodo();
   }, [getTodo]);
-
-  useEffect(()=> {
-    getTodo()
-  }, [getTodo])
 
   return (
     <div className="container">
@@ -89,21 +118,33 @@ try {
 
         <h3>Active tasks:</h3>
         <div className="todos">
-         {
-           todos.map((todo, index) => {
-             return (
+          {todos.map((todo, index) => {
+
+
+
+
+return (
               <div className="row flex todos-item" key={index}>
-              <div className="col todos-num">{index + 1}</div>
-              <div className="col todos-text">{todo.text}</div>
-              <div className="col todos-buttons">
-                <i className="material-icons grey-text">check</i>
-                <i className="material-icons orange-text">warning</i>
-                <i className="material-icons red-text" onClick={() => removeTodos(todo._id)}>delete</i>
-            </div>
-          </div>
-             )
-           })
-         }
+                <div className="col todos-num">{index + 1}</div>
+                <div className="col todos-text">{todo.text}</div>
+                <div className="col todos-buttons">
+                  <i
+                    className="material-icons grey-text"
+                    onClick={() => completedTodo(todo._id)}
+                  >
+                    check
+                  </i>
+                  <i className="material-icons orange-text">warning</i>
+                  <i
+                    className="material-icons red-text"
+                    onClick={() => removeTodos(todo._id)}
+                  >
+                    delete
+                  </i>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
