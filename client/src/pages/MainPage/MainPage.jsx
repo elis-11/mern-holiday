@@ -7,8 +7,11 @@ import "./MainPage.scss";
 const MainPage = () => {
   const [text, setText] = useState("");
   const {userId} = useContext(AuthContext);
+const [todos, setTodos] = useState([])
+
 
   const createTodo = useCallback(async () => {
+    if(!text) return null
     try {
       await axios.post(
         "/api/todo/add",
@@ -17,11 +20,14 @@ const MainPage = () => {
           headers: { "Content-Type": "application/json" },
         }
       )
-      .then((response) => console.log(response))
+      .then((response) => {
+        setTodos([...todos], response.data)
+        setText('')
+      })
     } catch (error) {
       console.log(error);
     }
-  }, [text, userId]);
+  }, [text, userId, todos]);
 
   return (
     <div className="container">
@@ -35,6 +41,7 @@ const MainPage = () => {
                 id="text"
                 name="input"
                 className="validate"
+                value={text}
                 onChange={(e) => setText(e.target.value)}
               />
               <label htmlFor="input">Task</label>
@@ -55,9 +62,9 @@ const MainPage = () => {
             <div className="col todos-num">1</div>
             <div className="col todos-text">Text</div>
             <div className="col todos-buttons">
-              <i class="material-icons grey-text">check</i>
-              <i class="material-icons orange-text">warning</i>
-              <i class="material-icons red-text">delete</i>
+              <i className="material-icons grey-text">check</i>
+              <i className="material-icons orange-text">warning</i>
+              <i className="material-icons red-text">delete</i>
             </div>
           </div>
         </div>
