@@ -118,13 +118,16 @@ const MainPage = () => {
 
         <h3>Active tasks:</h3>
         <div className="todos">
+          
           {todos.map((todo, index) => {
+            let cls = ["row flex todos-item"];
 
+            if (todo.completed) {
+              cls.push("completed");
+            }
 
-
-
-return (
-              <div className="row flex todos-item" key={index}>
+            return (
+              <div className={cls.join(" ")} key={index}>
                 <div className="col todos-num">{index + 1}</div>
                 <div className="col todos-text">{todo.text}</div>
                 <div className="col todos-buttons">
