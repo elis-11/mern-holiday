@@ -35,4 +35,15 @@ router.get('/', async (req, res) => {
   }
 })
 
+router.delete('/delete/:id', async (req, res) => {
+  try {
+  const todo = await Todo.findOneAndDelete({_id: req.params.id})
+  res.json(todo);
+  } catch (error) {
+    console.log(error);
+  }
+})
+
+
+
 module.exports = router;

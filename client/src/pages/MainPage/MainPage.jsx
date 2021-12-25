@@ -1,4 +1,4 @@
-import React, { useState, useContext, useCallback } from "react";
+import React, { useState, useEffect, useContext, useCallback } from "react";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 
@@ -43,6 +43,23 @@ const MainPage = () => {
     }
   }, [text, userId, todos, getTodo]);
 
+
+  const removeTodos = useCallback(async (id)=> {
+try {
+  await axios.delete(`/api/todo/delete/${id}`, {id}, {
+    headers: {'Content-Type': 'application/json'}
+  })
+  .then(() => getTodo())
+
+} catch (error) {
+  console.log(error);
+}
+  }, [getTodo]);
+
+  useEffect(()=> {
+    getTodo()
+  }, [getTodo])
+
   return (
     <div className="container">
       <div className="main-Page">
@@ -82,7 +99,7 @@ const MainPage = () => {
               <div className="col todos-buttons">
                 <i className="material-icons grey-text">check</i>
                 <i className="material-icons orange-text">warning</i>
-                <i className="material-icons red-text">delete</i>
+                <i className="material-icons red-text" onClick={() => removeTodos(todo._id)}>delete</i>
             </div>
           </div>
              )
