@@ -1,11 +1,14 @@
 import React, { useState, useContext } from "react";
-import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 
 import "./AuthPage.scss";
 
 const AuthPage = () => {
+
+const history = useHistory()
+
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -28,7 +31,8 @@ const AuthPage = () => {
             headers: { "Content-Type": "application/json" },
           }
         )
-        .then((response) => console.log(response));
+        // .then((response) => console.log(response));
+        history.push('/')
     } catch (error) {
       console.log(error);
     }
