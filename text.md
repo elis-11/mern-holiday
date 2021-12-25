@@ -19,7 +19,7 @@
 2:05:55--does not working update 
 2:10:25-- get new TODOS
 2:17:33--realize deleting
-2:23--
+2:23:30--realize function important & done tasks
 
 
 
