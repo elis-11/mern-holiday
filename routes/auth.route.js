@@ -5,7 +5,7 @@ const { check, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-// -----------REGISTRATION----------------
+// -----------REGISTR----------------
 router.post(
   "/registration",
 
@@ -43,7 +43,8 @@ router.post(
 
       await user.save();
 
-      res.status(201).json({ message: "User created!" });
+      // res.status(201).json({ message: "User created!" });
+      res.status(500).json(e.message)
     } catch (error) {
       console.log(error);
     }
