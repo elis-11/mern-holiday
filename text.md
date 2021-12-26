@@ -2,7 +2,10 @@
 
 
 7--ATLAS
+<<<<<<< HEAD
 8:30--mongo-atlass
+=======
+>>>>>>> 37439c6876bce22de5a09fabc4595ca239aa23aa
 24:42---AuthPage
 32:45---BACK--model--database
 36:15--Logik--routes
