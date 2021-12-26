@@ -1,11 +1,14 @@
 # https://www.youtube.com/watch?v=8PZMP06Vap4
 
+
+7--ATLAS
 24:42---AuthPage
 32:45---BACK--model--database
 36:15--Logik--routes
 43:17--Settings AuthPage.jsx
 46:57--HOOKS to AuthPage.jsx
 50.26--send-data
+56:50--ATLAS
 58:05--express-validator
 1:05:50--BCRYPT
 1:09:50--LOGIN

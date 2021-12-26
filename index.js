@@ -4,6 +4,7 @@ const cors = require('cors')
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+// app.set('trust proxy', 1);
 
 app.use(express.json({ extended: true }));
 app.use(cors())
@@ -12,10 +13,9 @@ app.use("/api/todo", require("./routes/todo.route"));
 
 async function start() {
   try {
-    // await mongoose.connect(
-    mongoose.connect(
-      // "mongodb+srv://elis2:elis@cluster0.gzwcn.mongodb.net/holiday?retryWrites=true&w=majority",
-      'mongodb+srv://elis3:elis@cluster0.gzwcn.mongodb.net/todo?retryWrites=true&w=majority',
+    await mongoose.connect(
+    // mongoose.connect(
+      "mongodb+srv://elis3:elis@cluster0.ldv56.mongodb.net/todo?retryWrites=true&w=majority",
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,
