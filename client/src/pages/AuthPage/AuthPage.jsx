@@ -95,7 +95,7 @@ const history = useHistory()
                       Login
                     </button>
                     <Link to="/registration" className="btn-outline btn-reg">
-                      Don't you have an account?
+                      Don't have an account yet? Sing up
                     </Link>
                   </div>
                 </form>
@@ -134,7 +134,7 @@ const history = useHistory()
                       Registration
                     </button>
                     <Link to="login" className="btn-outline btn-reg">
-                      Do you have an account?
+                      Already have an account? Sing In
                     </Link>
                   </div>
                 </form>
