@@ -1,5 +1,7 @@
 # https://www.youtube.com/watch?v=8PZMP06Vap4
 
+## killall node
+## npm start
 
 7--ATLAS
 <<<<<<< HEAD
