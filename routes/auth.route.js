@@ -44,7 +44,7 @@ router.post(
       await user.save();
 
       // res.status(201).json({ message: "User created!" });
-      res.status(500).json(e.message)
+      res.status(500).json(e.message);
     } catch (error) {
       console.log(error);
     }
@@ -85,16 +85,11 @@ router.post(
 
       const jwtSecret = "foiazwfghsgddkagbyxjkahdgjhcks";
 
-      const token = jwt.sign(
-        { userId: user.id },
-         jwtSecret, 
-         {expiresIn: "1h",}
-      );
+      const token = jwt.sign({ userId: user.id }, jwtSecret, {
+        expiresIn: "1h",
+      });
 
-            res.json({ token, userId: user.id });
-
-
-
+      res.json({ token, userId: user.id });
     } catch (error) {
       console.log(error);
     }

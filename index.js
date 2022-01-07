@@ -15,8 +15,8 @@ async function start() {
   try {
     await mongoose.connect(
     // mongoose.connect(
-      "mongodb+srv://elis3:elis@cluster0.ldv56.mongodb.net/todo?retryWrites=true&w=majority",
-      {
+      "mongodb+srv://elis:elis@cluster0.ldv56.mongodb.net/todo?retryWrites=true&w=majority"
+      ,{
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true,
