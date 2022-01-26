@@ -1,20 +1,25 @@
 import React, { useState, useContext } from "react";
-import { BrowserRouter, Switch, Route, Link, useHistory } from "react-router-dom";
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+  Link,
+  useHistory,
+} from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 
 import "./AuthPage.scss";
 
 const AuthPage = () => {
-
-const history = useHistory()
+  const history = useHistory();
 
   const [form, setForm] = useState({
     email: "",
     password: "",
   });
 
-  const {login} =useContext(AuthContext);
+  const { login } = useContext(AuthContext);
 
   const changeHandler = (event) => {
     setForm({ ...form, [event.target.name]: event.target.value });
@@ -23,22 +28,21 @@ const history = useHistory()
 
   const registerHandler = async () => {
     try {
-      await axios
-        .post(
-          "/api/auth/registration",
-          { ...form },
-          {
-            headers: { "Content-Type": "application/json" },
-          }
-        )
-        // .then((response) => console.log(response));
-        history.push('/')
+      await axios.post(
+        "/api/auth/registration",
+        { ...form },
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+      // .then((response) => console.log(response));
+      history.push("/");
     } catch (error) {
       console.log(error);
     }
   };
 
-  const loginHandler= async()=>{
+  const loginHandler = async () => {
     try {
       await axios
         .post(
@@ -49,12 +53,12 @@ const history = useHistory()
           }
         )
         .then((response) => {
-          login(response.data.token, response.data.userId)
+          login(response.data.token, response.data.userId);
         });
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   return (
     <BrowserRouter>
@@ -89,8 +93,9 @@ const history = useHistory()
                     </div>
                   </div>
                   <div className="row">
-                    <button className="waves-effect waves-light btn grey"
-                    onClick={loginHandler}
+                    <button
+                      className="waves-effect waves-light btn grey"
+                      onClick={loginHandler}
                     >
                       Login
                     </button>

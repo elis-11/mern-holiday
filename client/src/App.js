@@ -8,18 +8,20 @@ import { useAuth } from "./hooks/AuthHooks";
 import "./App.scss";
 
 function App() {
-  const {login, logout, token, userId, isReady} = useAuth()
-  const isLogin= !!token
-  const routes = useRoutes(isLogin)
+  const { login, logout, token, userId, isReady } = useAuth();
+  const isLogin = !!token;
+  const routes = useRoutes(isLogin);
 
   return (
-    <AuthContext.Provider value={{login, logout, token, userId, isReady, isLogin}}>
-    <div className="App">
-      <BrowserRouter>
-        <Navbar />
-        {routes}
-      </BrowserRouter>
-    </div>
+    <AuthContext.Provider
+      value={{ login, logout, token, userId, isReady, isLogin }}
+    >
+      <div className="App">
+        <BrowserRouter>
+          <Navbar />
+          {routes}
+        </BrowserRouter>
+      </div>
     </AuthContext.Provider>
   );
 }

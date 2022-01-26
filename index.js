@@ -1,21 +1,21 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const cors = require('cors')
+const cors = require("cors");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 // app.set('trust proxy', 1);
 
 app.use(express.json({ extended: true }));
-app.use(cors())
+app.use(cors());
 app.use("/api/auth", require("./routes/auth.route"));
 app.use("/api/todo", require("./routes/todo.route"));
 
 async function start() {
   try {
     await mongoose.connect(
-      "mongodb+srv://elis:elis@cluster0.ldv56.mongodb.net/holiday?retryWrites=true&w=majority"
-      ,{
+      "mongodb+srv://elis:elis@cluster0.ldv56.mongodb.net/holiday?retryWrites=true&w=majority",
+      {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true,
