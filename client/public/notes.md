@@ -2,6 +2,12 @@
 
 ## killall node
 ## npm run dev
+---
+- npm i
+- npm run server
+- cd client
+- npm i
+- npm run client
 
 7--ATLAS
 8:30--mongo-atlass
